@@ -5,9 +5,9 @@ public class BinaryTree{
     AVLNode rootPtr;
 
 
-    public void insert(String t, int numAvail, int numRented)
+    public void insert(String key, Book book)
     {
-        AVLNode newAVLNode = new AVLNode(t, numAvail, numRented); //creates a new node with the values specified
+        AVLNode newAVLNode = new AVLNode(key,book); //creates a new node with the isbn as key and the book saved
         recursiveInsert(newAVLNode, rootPtr);
     }
 
@@ -16,19 +16,19 @@ public class BinaryTree{
 
         if (root == null) //if there are no nodes in the binary tree
             rootPtr = newAVLNode;
-        else if (newAVLNode.getTitle().compareTo(root.getTitle()) < 0) //value < root.getVal(), if the current value is less than the one being compared to
+        else if (newAVLNode.getKey().compareTo(root.getKey()) < 0) //value < root.getVal(), if the current value is less than the one being compared to
         {
-            if (root.getLeft() != null)
-                recursiveInsert(newAVLNode,root.getLeft());
+            if (root.getLeftPtr() != null)
+                recursiveInsert(newAVLNode,root.getLeftPtr());
             else
-                root.setLeft(newAVLNode);
+                root.setLeftPtr(newAVLNode);
         }
         else
         {
-            if (root.getRight() != null)
-                recursiveInsert(newAVLNode, root.getRight());
+            if (root.getRightPtr() != null)
+                recursiveInsert(newAVLNode, root.getRightPtr());
             else
-                root.setRight(newAVLNode);
+                root.setRightPtr(newAVLNode);
         }
     }
 
@@ -42,14 +42,14 @@ public class BinaryTree{
         AVLNode returnVal;
         if (root == null) //if the title was not found in the list, return null
             returnVal = null;
-        else if (root.getTitle().equals(title)) //if the title is found in the list, return the node of the title
+        else if (root.getKey().equals(title)) //if the title is found in the list, return the node of the title
             return root;
         else
         {
-            if (title.compareTo(root.getTitle()) < 0) //if the title being searched is less than the current one, go to the left child
-                returnVal = recursiveSearch(title,root.getLeft());
+            if (title.compareTo(root.getKey()) < 0) //if the title being searched is less than the current one, go to the left child
+                returnVal = recursiveSearch(title,root.getLeftPtr());
             else
-                returnVal = recursiveSearch(title,root.getRight()); //go right since the current title is larger than the one being searched
+                returnVal = recursiveSearch(title,root.getRightPtr()); //go right since the current title is larger than the one being searched
         }
         return returnVal;
 
@@ -69,8 +69,8 @@ public class BinaryTree{
 
         //process left child, then node, then right child
 
-        recursiveInOrder(root.getLeft(), list);
+        recursiveInOrder(root.getLeftPtr(), list);
         list.add(root); //stores the inorder traversal nodes in the list
-        recursiveInOrder(root.getRight(), list);
+        recursiveInOrder(root.getRightPtr(), list);
     }
 }

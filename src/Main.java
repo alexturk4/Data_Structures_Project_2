@@ -43,16 +43,19 @@ public class Main {
                 String title = input.next();
                 String lastName = input.next();
 
-                // make a new book
-               // Book newBook = new Book(isbn,title,lastName);
-                tree.insert(isbn,);
+                // this removes the dash from the ISBN number
+                //isbnStr = isbn.replace("-","");
+                Book newBook = new Book(isbn,title,lastName);
+
                 // insert newBook into the AVL tree
+                tree.insert(isbn,newBook);
+
             }
         }
         catch (IOException e){
             System.out.println("Error reading file");
         }
-        return num;
+        return 0;
     }
 
 }
