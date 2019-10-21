@@ -51,7 +51,8 @@ public class BinaryTree{
         }
 
         // set the height of the maximum height between the left and right child
-        newAVLNode.setHeight(Math.max(checkHeight(newAVLNode.getLeftPtr()),checkHeight(newAVLNode.getRightPtr())));
+        if (root != null)
+            root.setHeight(Math.max(checkHeight(root.getLeftPtr()),checkHeight(root.getRightPtr())) + 1);
 
         // now check the balance of the node
         int balance = checkBalance(newAVLNode);
@@ -96,7 +97,7 @@ public class BinaryTree{
         //process left child, then node, then right child
 
         recursiveInOrder(root.getLeftPtr(), list);
-        list.add(root.getKey()); //stores the inorder traversal nodes in the list
+        list.add(root.getKey() + " " + root.getHeight()); //stores the inorder traversal nodes in the list
         recursiveInOrder(root.getRightPtr(), list);
     }
 }
