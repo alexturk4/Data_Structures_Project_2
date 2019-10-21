@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int bookNum;
+        BinaryTree tree = new BinaryTree();
 
+        readFile(tree);
+        System.out.println(tree.inOrder());
     }
 
     // this will get the number of books
@@ -18,8 +20,6 @@ public class Main {
             Scanner input = new Scanner(new File("bookInfo.txt"));
 
             // the pointer which will be used to store the contents of the binary tree
-            BinaryTree tree = new BinaryTree();
-
             while (input.hasNext()){
                 input.nextLine();
                 num++;

@@ -24,5 +24,10 @@ public class AVLNode {
     public void setRightPtr(AVLNode rightPtr) {
         this.rightPtr = rightPtr;
     }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
 }
 
